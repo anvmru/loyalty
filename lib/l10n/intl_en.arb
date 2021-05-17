@@ -1,0 +1,42 @@
+{
+  "app_name" : "Loayalty program",
+  "splash_text" : "Loayalty program",
+  "title_login" : "Loyality.HD",
+  "bar_cabinet" : "Cabinet",
+  "bar_profile" : "Profile",
+  "bar_login" : "Login",
+  "bar_reg" : "Registration",
+
+  "fab_qr" : "QR",
+
+  "user_name" : "Name",
+  "user_surname" : "Surname",
+  "user_paronymic": "Paronymic",
+  "user_email": "Login (email)",
+  "user_phone": "Phone",
+  "user_pwd": "Password",
+  "user_pwd2": "Password confirmation",
+  "user_birthday" : "Birthday",
+
+  "lp_card" : "Card number",
+  "lp_name" : "Loyalty program",
+  "lp_bonuses" : "Number of active bonuses",
+  "lp_description" : "Description",
+
+  "purchase_date" : "Purchase date",
+  "purchase_shop" : "Name of shop",
+  "purchase_total" : "Total purchase amount",
+  "purchase_lp" : "Loyalty program/Promotion",
+  "purchase_bonus" : "Bonus payment",
+  "purchase_payment" : "Total payable including bonuses",
+
+  "remaining" : "Remaining bonuses",
+  "err_load_data" : "Data loading error: ",
+  "btn_registration" : "Registration",
+  "btn_login" : "Login",
+  "check_name" : "Please enter your login or email",
+  "check_pwd" : "Please enter a valid password",
+  "check_notempty" : "Please fill in the field",
+  "check_pwd_noequal" : "Passwords are not equal"
+
+}

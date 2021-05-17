@@ -1,0 +1,42 @@
+{
+  "app_name" : "Программа лояльности",
+  "splash_text" : "Программа лояльности",
+  "title_login" : "Loyality.HD",
+  "bar_cabinet" : "Кабинет",
+  "bar_profile" : "Профиль",
+  "bar_login" : "Вход",
+  "bar_reg" : "Регистрация",
+
+  "fab_qr" : "QR",
+
+  "user_name" : "Имя",
+  "user_surname" : "Фамилия",
+  "user_paronymic": "Отчество",
+  "user_email": "Логин (email)",
+  "user_phone": "Телефон",
+  "user_pwd": "Пароль",
+  "user_pwd2": "Подтверждение пароля",
+  "user_birthday" : "Дата рождения",
+
+  "lp_card" : "Номер карты",
+  "lp_name" : "Программа лояльности",
+  "lp_bonuses" : "Число активных бонусов",
+  "lp_description" : "Описание",
+
+  "purchase_date" : "Дата покупки",
+  "purchase_shop" : "Название магазина",
+  "purchase_total" : "Общая сумма покупки",
+  "purchase_lp" : "Программа лояльности/Акция",
+  "purchase_bonus" : "Оплата бонусами",
+  "purchase_payment" : "Итого к оплате с учетом бонусов",
+
+  "remaining" : "Остаток бонусов",
+  "err_load_data" : "Ошибка загрузки данных: ",
+  "btn_registration" : "Регистрация",
+  "btn_login" : "Вход",
+  "check_name" : "Пожалуйста введите ваш логин или email",
+  "check_pwd" : "Введите действительный пароль",
+  "check_notempty" : "Пожалуйста, заполните поле",
+  "check_pwd_noequal" : "Пароли не равны"
+
+}
