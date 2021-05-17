@@ -1,2 +1,2 @@
 # loyalty
-Test work 
+Test work for Vlad Pisatel (@Pisatel)
