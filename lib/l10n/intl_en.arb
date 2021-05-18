@@ -29,6 +29,8 @@
   "purchase_lp" : "Loyalty program/Promotion",
   "purchase_bonus" : "Bonus payment",
   "purchase_payment" : "Total payable including bonuses",
+  "purchase_amount" : "Total:",
+  "purchase_payb" : "Bonuses:",
 
   "remaining" : "Remaining bonuses",
   "err_load_data" : "Data loading error: ",
@@ -37,6 +39,9 @@
   "check_name" : "Please enter your login or email",
   "check_pwd" : "Please enter a valid password",
   "check_notempty" : "Please fill in the field",
-  "check_pwd_noequal" : "Passwords are not equal"
+  "check_pwd_noequal" : "Passwords are not equal",
 
+  "cabinet_lpname" : "Loyalty:",
+  "cabinet_remaining" : "Remaining bonuses:",
+  "cabinet_titlelist" : "Purchases"
 }

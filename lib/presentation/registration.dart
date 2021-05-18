@@ -4,19 +4,18 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../model/user.dart';
-import '../providers/user_provider.dart';
+import '../providers/data_provider.dart';
 import '../utils/const.dart';
 import '../widget/btn_login.dart';
 import '../widget/title_login.dart';
-import 'main_page.dart';
 
 // Model
 class RegModel {
-  UserProvider _userProvider;
-  User get user => _userProvider.user;
+  DataProvider _dataProvider;
+  User get user => _dataProvider.user;
 
   RegModel(BuildContext context) {
-    _userProvider = Provider.of<UserProvider>(context);
+    _dataProvider = Provider.of<DataProvider>(context);
   }
 }
 
@@ -36,7 +35,7 @@ class RegController {
   }
 
   String checkNotEmpty(String value) {
-    user.name = value;
+    user.firstName = value;
     return ((value.length == 0) ? gLocale.check_notempty : null);
   }
 
@@ -76,15 +75,13 @@ class _RegPageState extends State<RegPage> {
     final DateFormat format = DateFormat("dd.MM.yyyy");
 
     tecEmail.text = _rc.user.email;
-    tecName.text = _rc.user.name;
-    tecSurname.text = _rc.user.surname;
-    tecPatronymic.text = _rc.user.paronymic;
+    tecName.text = _rc.user.firstName;
+    tecSurname.text = _rc.user.lastName;
+    tecPatronymic.text = _rc.user.middleName;
     tecPhone.text = _rc.user.phoneNumber;
     tecPwd.text = "";
     tecPwd2.text = "";
     tecBirthday.text = format.format(_rc.user.birthday);
-
-//    tecBirthday.text = _rc.user.birthday.toString().substring(0,10);
 
     titleStyle = Theme.of(context).textTheme.headline6;
     sizeApp = MediaQuery.of(context).size;
@@ -202,18 +199,16 @@ class _RegPageState extends State<RegPage> {
 
   Future<Null> _selectDate(BuildContext context) async {
     DateFormat formatter = DateFormat('dd.MM.yyyy');//specifies day/month/year format
-    DateTime selectedDate = DateTime.now();
 
     final DateTime picked = await showDatePicker(
         context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(1917, 1),
-        lastDate: DateTime(2020)
+        initialDate: _rc.user.birthday,
+        firstDate: DateTime(1920),
+        lastDate: DateTime.now(),
     );
-    if (picked != null && picked != selectedDate)
-      tecBirthday.value = TextEditingValue(text: formatter.format(picked));
+    if (picked != null && picked != _rc.user.birthday)
       setState(() {
-        selectedDate = picked;
+        _rc.user.birthday = picked;
         //Use formatter to format selected date and assign to text field
         tecBirthday.value = TextEditingValue(text: formatter.format(picked));
       });

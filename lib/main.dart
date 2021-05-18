@@ -11,9 +11,10 @@ import 'presentation/login.dart';
 import 'presentation/main_page.dart';
 import 'presentation/profile.dart';
 import 'presentation/registration.dart';
-import 'providers/user_provider.dart';
+import 'providers/data_provider.dart';
 import 'utils/const.dart';
 import 'utils/theme.dart';
+import 'widget/qr_code.dart';
 import 'widget/splash.dart';
 
 final _navKey = GlobalKey<NavigatorState>();
@@ -27,6 +28,8 @@ Map<String, Widget Function(BuildContext)> menuRoutes = {
   ProfilePage.id: (context) => ProfilePage(),
   LoginPage.id: (context) => LoginPage(),
   RegPage.id: (context) => RegPage(),
+  MainPage.id: (context) => MainPage(),
+  QrCode.id: (context) => QrCode(),
 };
 
 class MyApp extends StatelessWidget {
@@ -38,7 +41,7 @@ class MyApp extends StatelessWidget {
       initial: AdaptiveThemeMode.light,
       builder: (light, dark) => MultiProvider(
         providers: [
-          ChangeNotifierProvider<UserProvider>(create: (_) => UserProvider()),
+          ChangeNotifierProvider<DataProvider>(create: (_) => DataProvider()),
         ],
         child: MaterialApp(
           navigatorKey: _navKey,
@@ -67,7 +70,7 @@ class MyApp extends StatelessWidget {
                   return snapshot.data;
                 } else {
                   print(snapshot.data);
-                  return Text(gLocale.err_load_data + "${snapshot.data}");
+                  return Text("${gLocale.err_load_data} ${snapshot.data}");
                 }
               }
             },

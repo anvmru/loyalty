@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
 import '../widget/qr_code.dart';
-import '../providers/user_provider.dart';
+//import '../providers/data_provider.dart';
 import '../presentation/cabinet.dart';
 import '../presentation/profile.dart';
 import '../utils/const.dart';
@@ -18,7 +18,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  UserProvider _userProvider;
+  //DataProvider _dataProvider;
   final PageController _pageController = PageController();
   int _page;
 
@@ -28,11 +28,11 @@ class _MainPageState extends State<MainPage> {
     _page = 0;
   }
 
-  @override
-  void didChangeDependencies() {
-    _userProvider = Provider.of<UserProvider>(context);
-    super.didChangeDependencies();
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   _dataProvider = Provider.of<DataProvider>(context);
+  //   super.didChangeDependencies();
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +49,7 @@ class _MainPageState extends State<MainPage> {
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 0),
             child: BottomNavigationBar(
-              selectedItemColor: Theme.of(context).indicatorColor,
+              backgroundColor: Theme.of(context).backgroundColor,
               items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: gLocale.bar_cabinet),
                 BottomNavigationBarItem(icon: Icon(Icons.chat), label: gLocale.bar_profile),
@@ -62,8 +62,14 @@ class _MainPageState extends State<MainPage> {
           )),
       floatingActionButton: FloatingActionButton(
         child: Text(gLocale.fab_qr),
-        onPressed: () => Navigator.of(context).pushNamed(QrCode.id),
+        onPressed: () {
+          showDialog<bool>(
+              context: context,
+              builder: (BuildContext context) => QrCode()
+          );
+        },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 

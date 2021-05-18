@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:loyalty/presentation/main_page.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/user_provider.dart';
+import '../providers/data_provider.dart';
 import '../widget/btn_login.dart';
 import '../widget/title_login.dart';
 import '../utils/const.dart';
@@ -15,12 +15,12 @@ class LoginModel {
   LoginState loginState;
   String email;
   String pwd;
-  UserProvider _userProvider;
+  DataProvider _dataProvider;
 
   LoginModel(BuildContext context) {
     loginState = LoginState.Undefine;
-    _userProvider = Provider.of<UserProvider>(context);
-    email = _userProvider.user?.email;
+    _dataProvider = Provider.of<DataProvider>(context);
+    email = _dataProvider.user?.email;
   }
 
   bool login() {
@@ -42,7 +42,7 @@ class LoginController {
   void login() {
     print("* LoginController.login");
     if(_lm?.login()) {
-      Navigator.of(context).pop();
+      Navigator.of(context).pushReplacementNamed(MainPage.id);
     };
   }
 

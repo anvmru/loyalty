@@ -295,6 +295,26 @@ class S {
     );
   }
 
+  /// `Total:`
+  String get purchase_amount {
+    return Intl.message(
+      'Total:',
+      name: 'purchase_amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bonuses:`
+  String get purchase_payb {
+    return Intl.message(
+      'Bonuses:',
+      name: 'purchase_payb',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Remaining bonuses`
   String get remaining {
     return Intl.message(
@@ -370,6 +390,36 @@ class S {
     return Intl.message(
       'Passwords are not equal',
       name: 'check_pwd_noequal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loyalty:`
+  String get cabinet_lpname {
+    return Intl.message(
+      'Loyalty:',
+      name: 'cabinet_lpname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remaining bonuses:`
+  String get cabinet_remaining {
+    return Intl.message(
+      'Remaining bonuses:',
+      name: 'cabinet_remaining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Purchases`
+  String get cabinet_titlelist {
+    return Intl.message(
+      'Purchases',
+      name: 'cabinet_titlelist',
       desc: '',
       args: [],
     );

@@ -2,15 +2,38 @@
 
 Test work - loyalty programs
 
-## Getting Started
+Domain model
+--------------
+Portfolio                   // Портфель
+  User user;                // Пользователь
+  LoyaltyProg loyaltyProg;  // Программа лояльности
+  List<Purchase> purchases; // Покупки
+    
+User                        // Пользователь    
+  String email;             // Логин
+  String firstName;         // Имя
+  String middleName;        // Отчество
+  String lastName;          // Фамилия
+  String phoneNumber;       // Телефон
+  String pwd;               // Пароль (для простоты тут и в открытом виде)
+  DateTime birthday;        // Дата рождения
 
-This project is a starting point for a Flutter application.
+LoyaltyProg                 // Программа лояльности
+  String id;                // Идентификатор
+  String name;              // Наименование программы
+  double bonuses;           // Накопления бонусов суммарно с начала действия программы
+  List<LoyalityLevel> levels; // Правила начисления бонусов
 
-A few resources to get you started if this is your first Flutter project:
+LoyalityLevel               // Правила начисления бонусов
+  Level level;              // Уровень льготности
+  double minPay;            // Минимальная сумма покупки по чеку
+  double bonusAmount;       // Количество начисляемых бонусов
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Purchases                   // Покупки
+  String id;                // Идентификатор
+  DateTime date;            // Дата и время
+  String shop;              // Наименование торговой точки (по чеку)
+  double totalPay;          // Сумма покупки (руб)
+  double bonusPay;          // Списано бонусов
+  double payWoBonus;        // Сумма за вычетом бонусов (руб)
+  String loyaltyProgId;     // Программа лояльности по которой списаны бонусы
