@@ -6,6 +6,8 @@ import '../utils/util.dart';
 
 part "purchase.g.dart";
 
+// flutter packages pub run build_runner build
+
 final DateFormat format = DateFormat("yyyyMMdd");
 
 @JsonSerializable()
@@ -26,19 +28,33 @@ class Purchase {
   factory Purchase.fromJson(Map<String, dynamic> json) => _$PurchaseFromJson(json);
   Map<String, dynamic> toJson() => _$PurchaseToJson(this);
 
+  // Генерация тестового набора данных
   factory Purchase.test(String loyaltyProgId) {
     Random r = Random();
     double randTotal = r.nextDouble() * 4096.0;
-    double randBonus = (r.nextDouble() * 512.0).roundToDouble();
-    if(randBonus > randTotal) randBonus = randTotal.roundToDouble();
+    double randBonus = (r.nextDouble() * 256.0).roundToDouble();
+    if(randBonus > randTotal) randBonus = (randTotal-1).roundToDouble();
     return Purchase(
         id: Util.getId(),
-        date: DateTime.now(),
-        shop: "Лавка хакера",
+        date: _getRandomDate(),
+        shop: _getRandomShop(),
         totalPay: randTotal,
         bonusPay: randBonus,
         payWoBonus: randTotal - randBonus,
         loyaltyProgId: loyaltyProgId
     );
   }
+  static String _getRandomShop() {
+    Random r = Random();
+    const _shops = ["Лавка хакера", "YourFail", "Манит", "СисАдминистриада", "Пипеточка"];
+    return _shops[r.nextInt(5)];
+  }
+
+  static DateTime _getRandomDate() {
+    Random r = Random();
+    int d = r.nextInt(30);
+    DateTime res = DateTime.now().add(Duration(days: -d));
+    return res;
+  }
+
 }

@@ -21,13 +21,14 @@ User                        // Пользователь
 LoyaltyProg                 // Программа лояльности
   String id;                // Идентификатор
   String name;              // Наименование программы
+  String cardNo;            // Номер карты
   double bonuses;           // Накопления бонусов суммарно с начала действия программы
   List<LoyalityLevel> levels; // Правила начисления бонусов
 
 LoyalityLevel               // Правила начисления бонусов
   Level level;              // Уровень льготности
-  double minPay;            // Минимальная сумма покупки по чеку
-  double bonusAmount;       // Количество начисляемых бонусов
+  double payment;           // Шаг суммы за который начисляются бонусы 
+  double bonuses;           // Количество начисляемых бонусов за один шаг
 
 Purchases                   // Покупки
   String id;                // Идентификатор

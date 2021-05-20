@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 part "loyalty_level.g.dart";
 
+// flutter packages pub run build_runner build
+
 enum Level {Beginner, Silver, Gold, Platinum}
 
 extension ParseToString on Level {
@@ -8,24 +10,20 @@ extension ParseToString on Level {
 }
 
 @JsonSerializable()
-class LoyalityLevel {
+class LoyaltyLevel {
   Level level;
+  double payment;
+  double bonuses;
 
-  @JsonKey(name: 'min_pay')
-  double minPay;
-
-  @JsonKey(name: 'bonus_amount')
-  double bonusAmount;
-
-  LoyalityLevel({this.level, this.minPay, this.bonusAmount});
+  LoyaltyLevel({this.level, this.payment, this.bonuses});
 
   @override
   String toString() {
-    return "${this.level.toName()}: pay >= $minPay, bonus = $bonusAmount";
+    return "${this.level.toName()}: pay >= $payment, bonus = $bonuses";
   }
 
-  factory LoyalityLevel.fromJson(Map<String, dynamic> json) => _$LoyalityLevelFromJson(json);
+  factory LoyaltyLevel.fromJson(Map<String, dynamic> json) => _$LoyaltyLevelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoyalityLevelToJson(this);
+  Map<String, dynamic> toJson() => _$LoyaltyLevelToJson(this);
 }
 

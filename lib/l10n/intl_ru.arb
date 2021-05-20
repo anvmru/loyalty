@@ -6,6 +6,7 @@
   "bar_profile" : "Профиль",
   "bar_login" : "Вход",
   "bar_reg" : "Регистрация",
+  "bar_lp" : "Программа лояльности",
 
   "fab_qr" : "QR",
 
@@ -22,6 +23,10 @@
   "lp_name" : "Программа лояльности",
   "lp_bonuses" : "Число активных бонусов",
   "lp_description" : "Описание",
+  "lp_desc_level" : "Описание уровней",
+  "lp_t1" : "Уровень",
+  "lp_t2" : "За каждый\nплатеж",
+  "lp_t3" : "Начисляется\nбонусов",
 
   "purchase_date" : "Дата покупки",
   "purchase_shop" : "Название магазина",
@@ -30,12 +35,14 @@
   "purchase_bonus" : "Оплата бонусами",
   "purchase_payment" : "Итого к оплате с учетом бонусов",
   "purchase_amount" : "Итого:",
-  "purchase_payb" : "Бонусов:",
+  "purchase_payb" : "Оплата бонусами:",
 
   "remaining" : "Остаток бонусов",
-  "err_load_data" : "Ошибка загрузки данных: ",
+  "err_load_data" : "Ошибка загрузки данных",
   "btn_registration" : "Регистрация",
   "btn_login" : "Вход",
+  "btn_save" : "Сохранить",
+
   "check_name" : "Пожалуйста введите ваш логин или email",
   "check_pwd" : "Введите действительный пароль",
   "check_notempty" : "Пожалуйста, заполните поле",
@@ -43,5 +50,8 @@
 
   "cabinet_lpname" : "Программа:",
   "cabinet_remaining" : "Осталось бонусов:",
-  "cabinet_titlelist" : "Покупки"
+  "cabinet_titlelist" : "Покупки",
+  "cabinet_t1" : "Дата",
+  "cabinet_t2" : "Магазин",
+  "cabinet_t3" : "Оплата"
 }

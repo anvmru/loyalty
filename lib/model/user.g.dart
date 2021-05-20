@@ -17,6 +17,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
     birthday: json['birthday'] == null
         ? null
         : DateTime.parse(json['birthday'] as String),
+    state: _$enumDecodeNullable(_$UserStateEnumMap, json['state']),
   );
 }
 
@@ -28,4 +29,43 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'phone_number': instance.phoneNumber,
       'pwd': instance.pwd,
       'birthday': instance.birthday?.toIso8601String(),
+      'state': _$UserStateEnumMap[instance.state],
     };
+
+T _$enumDecode<T>(
+  Map<T, dynamic> enumValues,
+  dynamic source, {
+  T unknownValue,
+}) {
+  if (source == null) {
+    throw ArgumentError('A value must be provided. Supported values: '
+        '${enumValues.values.join(', ')}');
+  }
+
+  final value = enumValues.entries
+      .singleWhere((e) => e.value == source, orElse: () => null)
+      ?.key;
+
+  if (value == null && unknownValue == null) {
+    throw ArgumentError('`$source` is not one of the supported values: '
+        '${enumValues.values.join(', ')}');
+  }
+  return value ?? unknownValue;
+}
+
+T _$enumDecodeNullable<T>(
+  Map<T, dynamic> enumValues,
+  dynamic source, {
+  T unknownValue,
+}) {
+  if (source == null) {
+    return null;
+  }
+  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+}
+
+const _$UserStateEnumMap = {
+  UserState.Undefine: 'Undefine',
+  UserState.Login: 'Login',
+  UserState.Logout: 'Logout',
+};

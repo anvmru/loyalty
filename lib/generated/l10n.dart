@@ -105,6 +105,16 @@ class S {
     );
   }
 
+  /// `Loyalty program`
+  String get bar_lp {
+    return Intl.message(
+      'Loyalty program',
+      name: 'bar_lp',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `QR`
   String get fab_qr {
     return Intl.message(
@@ -235,6 +245,46 @@ class S {
     );
   }
 
+  /// `Description of levels`
+  String get lp_desc_level {
+    return Intl.message(
+      'Description of levels',
+      name: 'lp_desc_level',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Level`
+  String get lp_t1 {
+    return Intl.message(
+      'Level',
+      name: 'lp_t1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For each payment`
+  String get lp_t2 {
+    return Intl.message(
+      'For each payment',
+      name: 'lp_t2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bonuses are accrued`
+  String get lp_t3 {
+    return Intl.message(
+      'Bonuses are accrued',
+      name: 'lp_t3',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Purchase date`
   String get purchase_date {
     return Intl.message(
@@ -305,10 +355,10 @@ class S {
     );
   }
 
-  /// `Bonuses:`
+  /// `Payment by bonuses:`
   String get purchase_payb {
     return Intl.message(
-      'Bonuses:',
+      'Payment by bonuses:',
       name: 'purchase_payb',
       desc: '',
       args: [],
@@ -325,10 +375,10 @@ class S {
     );
   }
 
-  /// `Data loading error: `
+  /// `Data loading error`
   String get err_load_data {
     return Intl.message(
-      'Data loading error: ',
+      'Data loading error',
       name: 'err_load_data',
       desc: '',
       args: [],
@@ -350,6 +400,16 @@ class S {
     return Intl.message(
       'Login',
       name: 'btn_login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get btn_save {
+    return Intl.message(
+      'Save',
+      name: 'btn_save',
       desc: '',
       args: [],
     );
@@ -420,6 +480,36 @@ class S {
     return Intl.message(
       'Purchases',
       name: 'cabinet_titlelist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date`
+  String get cabinet_t1 {
+    return Intl.message(
+      'Date',
+      name: 'cabinet_t1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shop`
+  String get cabinet_t2 {
+    return Intl.message(
+      'Shop',
+      name: 'cabinet_t2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment`
+  String get cabinet_t3 {
+    return Intl.message(
+      'Payment',
+      name: 'cabinet_t3',
       desc: '',
       args: [],
     );

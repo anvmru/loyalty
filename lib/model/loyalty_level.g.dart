@@ -6,19 +6,19 @@ part of 'loyalty_level.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoyalityLevel _$LoyalityLevelFromJson(Map<String, dynamic> json) {
-  return LoyalityLevel(
+LoyaltyLevel _$LoyaltyLevelFromJson(Map<String, dynamic> json) {
+  return LoyaltyLevel(
     level: _$enumDecodeNullable(_$LevelEnumMap, json['level']),
-    minPay: (json['min_pay'] as num)?.toDouble(),
-    bonusAmount: (json['bonus_amount'] as num)?.toDouble(),
+    payment: (json['payment'] as num)?.toDouble(),
+    bonuses: (json['bonuses'] as num)?.toDouble(),
   );
 }
 
-Map<String, dynamic> _$LoyalityLevelToJson(LoyalityLevel instance) =>
+Map<String, dynamic> _$LoyaltyLevelToJson(LoyaltyLevel instance) =>
     <String, dynamic>{
       'level': _$LevelEnumMap[instance.level],
-      'min_pay': instance.minPay,
-      'bonus_amount': instance.bonusAmount,
+      'payment': instance.payment,
+      'bonuses': instance.bonuses,
     };
 
 T _$enumDecode<T>(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../utils/const.dart';
 
 //  Заставка
-Widget Splash(BuildContext context) {
+Widget mySplash(BuildContext context) {
   return Scaffold(
     backgroundColor: Colors.indigo, //.purple,
     body: Container(

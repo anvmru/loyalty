@@ -6,6 +6,7 @@
   "bar_profile" : "Profile",
   "bar_login" : "Login",
   "bar_reg" : "Registration",
+  "bar_lp" : "Loyalty program",
 
   "fab_qr" : "QR",
 
@@ -22,6 +23,10 @@
   "lp_name" : "Loyalty program",
   "lp_bonuses" : "Number of active bonuses",
   "lp_description" : "Description",
+  "lp_desc_level" : "Description of levels",
+  "lp_t1" : "Level",
+  "lp_t2" : "For each payment",
+  "lp_t3" : "Bonuses are accrued",
 
   "purchase_date" : "Purchase date",
   "purchase_shop" : "Name of shop",
@@ -30,12 +35,14 @@
   "purchase_bonus" : "Bonus payment",
   "purchase_payment" : "Total payable including bonuses",
   "purchase_amount" : "Total:",
-  "purchase_payb" : "Bonuses:",
+  "purchase_payb" : "Payment by bonuses:",
 
   "remaining" : "Remaining bonuses",
-  "err_load_data" : "Data loading error: ",
+  "err_load_data" : "Data loading error",
   "btn_registration" : "Registration",
   "btn_login" : "Login",
+  "btn_save" : "Save",
+
   "check_name" : "Please enter your login or email",
   "check_pwd" : "Please enter a valid password",
   "check_notempty" : "Please fill in the field",
@@ -43,5 +50,8 @@
 
   "cabinet_lpname" : "Loyalty:",
   "cabinet_remaining" : "Remaining bonuses:",
-  "cabinet_titlelist" : "Purchases"
+  "cabinet_titlelist" : "Purchases",
+  "cabinet_t1" : "Date",
+  "cabinet_t2" : "Shop",
+  "cabinet_t3" : "Payment"
 }

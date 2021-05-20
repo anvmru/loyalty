@@ -13,9 +13,8 @@ LoyaltyProg _$LoyaltyProgFromJson(Map<String, dynamic> json) {
     cardNo: json['cardNo'] as String,
     bonuses: (json['bonuses'] as num)?.toDouble(),
     levels: (json['levels'] as List)
-        ?.map((e) => e == null
-            ? null
-            : LoyalityLevel.fromJson(e as Map<String, dynamic>))
+        ?.map((e) =>
+            e == null ? null : LoyaltyLevel.fromJson(e as Map<String, dynamic>))
         ?.toList(),
   );
 }

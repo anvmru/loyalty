@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loyalty/presentation/loyalty_prog.dart';
 //import 'package:provider/provider.dart';
 
 import '../widget/qr_code.dart';
@@ -35,11 +36,13 @@ class _MainPageState extends State<MainPage> {
   // }
   @override
   Widget build(BuildContext context) {
+    print("* MainPage.build");
     return Scaffold(
       body: PageView(
         children: <Widget>[
           CabinetPage(),
           ProfilePage(),
+          LoyaltiProgPage(),
         ],
         controller: _pageController,
         onPageChanged: (page) => setState(() => _page = page),
@@ -51,8 +54,8 @@ class _MainPageState extends State<MainPage> {
             child: BottomNavigationBar(
               backgroundColor: Theme.of(context).backgroundColor,
               items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: gLocale.bar_cabinet),
-                BottomNavigationBarItem(icon: Icon(Icons.chat), label: gLocale.bar_profile),
+                BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: gLocale.bar_cabinet),
+                BottomNavigationBarItem(icon: Icon(Icons.person_pin), label: gLocale.bar_profile),
               ],
               onTap: (page) => _pageController.jumpToPage(page),
               currentIndex: _page,
@@ -61,7 +64,7 @@ class _MainPageState extends State<MainPage> {
             ),
           )),
       floatingActionButton: FloatingActionButton(
-        child: Text(gLocale.fab_qr),
+        child: Icon(Icons.qr_code),// Text(gLocale.fab_qr),
         onPressed: () {
           showDialog<bool>(
               context: context,

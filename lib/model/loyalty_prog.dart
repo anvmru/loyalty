@@ -3,6 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 import '../utils/util.dart';
 import 'loyalty_level.dart';
 
+// flutter packages pub run build_runner build
+
 part "loyalty_prog.g.dart";
 
 @JsonSerializable()
@@ -11,24 +13,25 @@ class LoyaltyProg {
   String name;
   String cardNo;
   double bonuses;
-  List<LoyalityLevel> levels;
+  List<LoyaltyLevel> levels;
 
-  LoyaltyProg({this.id, this.name, this.cardNo, this.bonuses, List<LoyalityLevel> levels});
+  LoyaltyProg({this.id, this.name, this.cardNo, this.bonuses, List<LoyaltyLevel> this.levels});
 
   factory LoyaltyProg.fromJson(Map<String, dynamic> json) => _$LoyaltyProgFromJson(json);
   Map<String, dynamic> toJson() => _$LoyaltyProgToJson(this);
 
+  // Тестовый набор данных
   factory LoyaltyProg.test() {
     return LoyaltyProg(
       id: Util.getId(),
-      name: "Для программистов",
+      name: "В день защиты детей",
       cardNo: "0123-4567",
-      bonuses: 6500.0,
-      levels: <LoyalityLevel>[
-        LoyalityLevel(level: Level.Beginner, minPay: 100, bonusAmount: 10),
-        LoyalityLevel(level: Level.Silver, minPay: 1000, bonusAmount: 20),
-        LoyalityLevel(level: Level.Gold, minPay: 5000, bonusAmount: 100),
-        LoyalityLevel(level: Level.Platinum, minPay: 10000, bonusAmount: 500)
+      bonuses: 9550.0,
+      levels: <LoyaltyLevel>[
+        LoyaltyLevel(level: Level.Beginner, payment: 100, bonuses: 10),
+        LoyaltyLevel(level: Level.Silver, payment: 1000, bonuses: 20),
+        LoyaltyLevel(level: Level.Gold, payment: 5000, bonuses: 100),
+        LoyaltyLevel(level: Level.Platinum, payment: 10000, bonuses: 500)
       ]
     );
   }

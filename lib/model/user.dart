@@ -3,6 +3,10 @@ import 'package:intl/intl.dart';
 
 part "user.g.dart";
 
+// flutter packages pub run build_runner build
+
+enum UserState { Undefine, Login, Logout }
+
 final DateFormat format = DateFormat("yyyyMMdd");
 
 @JsonSerializable()
@@ -18,8 +22,9 @@ class User {
   String phoneNumber;
   String pwd;
   DateTime birthday;
+  UserState state;
 
-  User({this.email, this.firstName, this.lastName, this.middleName, this.phoneNumber, this.pwd, this.birthday});
+  User({this.email, this.firstName, this.lastName, this.middleName, this.phoneNumber, this.pwd, this.birthday, this.state});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
@@ -27,12 +32,13 @@ class User {
   factory User.test() {
     return User(
       email: "dart@my.com",
-      firstName: "Ivan",
-      lastName: "Popov",
-      middleName: "Petrovich",
+      firstName: "Александр",
+      lastName: "Пушкин",
+      middleName: "Сергеевич",
       phoneNumber: "+7(913)102-1024",
-      pwd: "psw",
-      birthday: DateTime(1990, 4, 1)
+      pwd: "qwe",
+      birthday: DateTime(1990, 4, 1),
+      state: UserState.Undefine
     );
   }
 }
