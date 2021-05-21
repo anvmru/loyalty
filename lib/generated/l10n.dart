@@ -345,10 +345,10 @@ class S {
     );
   }
 
-  /// `Total:`
+  /// `Purchase amount:`
   String get purchase_amount {
     return Intl.message(
-      'Total:',
+      'Purchase amount:',
       name: 'purchase_amount',
       desc: '',
       args: [],
@@ -420,6 +420,16 @@ class S {
     return Intl.message(
       'Please enter your login or email',
       name: 'check_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid login`
+  String get check_name2 {
+    return Intl.message(
+      'Please enter a valid login',
+      name: 'check_name2',
       desc: '',
       args: [],
     );

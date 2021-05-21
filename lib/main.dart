@@ -43,10 +43,9 @@ Map<String, Widget Function(BuildContext)> menuRoutes = {
 };
 
 class MyApp extends StatelessWidget {
-  DataProvider _dp;
   @override
   Widget build(BuildContext context) {
-    _dp = DataProvider();
+    final DataProvider _dp = DataProvider();
     final LoginController _lc = LoginController(context, _dp);
     final ProfileController _pc = ProfileController(context, _dp);
     return AdaptiveTheme(
@@ -73,31 +72,32 @@ class MyApp extends StatelessWidget {
                   darkTheme: dark,
                   routes: menuRoutes,
                   home: FutureBuilder(
-                    future: _loadData(context),
-                    builder: (context, snapshot) {
-                      // запоминаем для коротких ссылок ниже по тексту
-                      gLocale = S.of(_navKey.currentState.overlay.context);
-                      // ожидание загрузки из внутренего хранилища и по сети
-                      if (snapshot.connectionState != ConnectionState.done) {
-                        return mySplash(context);
-                      } else {
-                        if (snapshot.hasData) {
-                          return snapshot.data;
-                        }
-                        if (snapshot.hasError) {
-                          return error(context, "${gLocale.err_load_data} ${snapshot.error.toString()}");
-                        }
-                      }
-                    },
-                  )),
+                      future: _loadData(context, _dp),
+                      builder: (context, snapshot) => _builder(context, snapshot)
+                      )),
             ));
   }
 
   // Проверка входа
-  Future<Widget> _loadData(BuildContext context) async {
-    print("* Main._loadData");
-    bool r = await _dp.ready;
-    print(r ? "* -> ready" : "* -> not ready");
-    return (_dp.user?.state == UserState.Login) ? MainPage() : LoginPage();
+  Future<Widget> _loadData(BuildContext context, DataProvider dp) async {
+    await dp.ready;
+    return (dp.user?.state == UserState.Login) ? MainPage() : LoginPage();
+  }
+
+  Widget _builder(context, snapshot) {
+    // запоминаем для коротких ссылок ниже по дереву
+    gLocale = S.of(_navKey.currentState.overlay.context);
+
+    // ожидание загрузки из внутренего хранилища и по сети
+    if (snapshot.connectionState != ConnectionState.done) {
+      return mySplash(context);
+    } else {
+      if (snapshot.hasData) {
+        return snapshot.data;
+      }
+      if (snapshot.hasError) {
+        return error(context, "${gLocale.err_load_data} ${snapshot.error.toString()}");
+      }
+    }
   }
 }

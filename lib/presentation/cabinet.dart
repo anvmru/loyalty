@@ -18,7 +18,7 @@ class CabinetPage extends StatelessWidget {
     final DataProvider _dp = Provider.of<DataProvider>(context);
 
     return Scaffold(
-      appBar: mainAppBar(context),
+      appBar: mainAppBar(context, gLocale.bar_cabinet),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -39,7 +39,7 @@ class CabinetPage extends StatelessWidget {
             ),
             Center(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
                 child: Text("${gLocale.cabinet_titlelist}", style: Theme.of(context).textTheme.headline6),
               ),
             ),

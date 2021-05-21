@@ -18,8 +18,7 @@ class LoginController with ChangeNotifier {
   }
 
   Future<void> login(BuildContext context) async {
-    if(tecPsw.text == _dp.user.pwd &&
-        tecEmail.text == _dp.user.email) {
+    if(tecPsw.text == _dp.user.pwd && tecEmail.text == _dp.user.email) {
       await _dp.login(context);
       Navigator.of(context).pushNamedAndRemoveUntil(MainPage.id, (route) => false);
     };
@@ -30,7 +29,8 @@ class LoginController with ChangeNotifier {
   }
 
   String checkEmail(String value) {
-    return ((value.length == 0) ? gLocale.check_name : null);
+    return ((value.length == 0) ? gLocale.check_name
+        : (value != _dp.user.email) ?  gLocale.check_name2 : null);
   }
 
   String checkPwd(String value) {
@@ -38,7 +38,9 @@ class LoginController with ChangeNotifier {
         ? gLocale.check_pwd : null);
   }
 
+  @override
   void dispose() {
+    super.dispose();
     tecEmail.dispose();
     tecPsw.dispose();
   }

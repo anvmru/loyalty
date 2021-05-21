@@ -19,18 +19,4 @@ class Portfolio {
 
   factory Portfolio.fromJson(Map<String, dynamic> json) => _$PortfolioFromJson(json);
   Map<String, dynamic> toJson() => _$PortfolioToJson(this);
-
-  // Тестовый набор данных
-  factory Portfolio.test() {
-    LoyaltyProg lpTest = LoyaltyProg.test();
-    return Portfolio(user: User(), loyaltyProg: lpTest, purchases: getPurchases(lpTest.id));
-  }
-  static List<Purchase> getPurchases(String lpId) {
-    List<Purchase> res = [];
-    for(var i=0; i<40; i++) {
-      res.add(Purchase.test(lpId));
-    }
-    res.sort((p1, p2) => p2.date.compareTo(p1.date));
-    return res;
-  }
 }

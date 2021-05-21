@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
+//import 'package:flutter_multi_formatter/formatters/masked_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 import '../widget/mainappbar.dart';
@@ -18,7 +20,7 @@ class ProfilePage extends StatelessWidget {
     _pc.iniTec();
 
     return Scaffold(
-      appBar: mainAppBar(context),
+      appBar: mainAppBar(context, gLocale.bar_profile),
       body: Form(
           key: _formKey,
           child: ListView(children: <Widget>[
@@ -79,6 +81,7 @@ class ProfilePage extends StatelessWidget {
                   keyboardType: TextInputType.phone,
                   decoration: new InputDecoration(hintText: gLocale.user_phone),
                   validator: (value) => _pc.checkPhone(value),
+                  inputFormatters: [ PhoneInputFormatter()]
                 )),
             // Дата рождения
             ListTile(
@@ -88,6 +91,7 @@ class ProfilePage extends StatelessWidget {
                   keyboardType: TextInputType.datetime,
                   decoration: new InputDecoration(hintText: gLocale.user_birthday),
                   validator: (value) => _pc.checkBirthday(value),
+//                  inputFormatters: [ MaskedInputFormatter("##.##.####")]
                 ),
                 trailing:
                     IconButton(icon: Icon(Icons.date_range),
@@ -99,7 +103,9 @@ class ProfilePage extends StatelessWidget {
       floatingActionButton: !_pc.isEdit ? Container() :
       FloatingActionButton(
         child: Icon(Icons.save),
-        onPressed: () async => await _pc.save(context),
+        onPressed: () async {
+            if(_formKey.currentState.validate()) await _pc.save(context);
+          },
         backgroundColor: Colors.red,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,

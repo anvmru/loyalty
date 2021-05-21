@@ -28,17 +28,4 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
-
-  factory User.test() {
-    return User(
-      email: "dart@my.com",
-      firstName: "Александр",
-      lastName: "Пушкин",
-      middleName: "Сергеевич",
-      phoneNumber: "+7(913)102-1024",
-      pwd: "qwe",
-      birthday: DateTime(1990, 4, 1),
-      state: UserState.Undefine
-    );
-  }
 }

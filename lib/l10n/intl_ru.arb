@@ -34,7 +34,7 @@
   "purchase_lp" : "Программа лояльности/Акция",
   "purchase_bonus" : "Оплата бонусами",
   "purchase_payment" : "Итого к оплате с учетом бонусов",
-  "purchase_amount" : "Итого:",
+  "purchase_amount" : "Сумма покупки:",
   "purchase_payb" : "Оплата бонусами:",
 
   "remaining" : "Остаток бонусов",
@@ -43,15 +43,16 @@
   "btn_login" : "Вход",
   "btn_save" : "Сохранить",
 
-  "check_name" : "Пожалуйста введите ваш логин или email",
+  "check_name" : "Пожалуйста, введите ваш логин или email",
+  "check_name2" : "Пожалуйста введите верный логин",
   "check_pwd" : "Введите действительный пароль",
   "check_notempty" : "Пожалуйста, заполните поле",
   "check_pwd_noequal" : "Пароли не равны",
 
   "cabinet_lpname" : "Программа:",
-  "cabinet_remaining" : "Осталось бонусов:",
-  "cabinet_titlelist" : "Покупки",
+  "cabinet_remaining" : "Активных бонусов:",
+  "cabinet_titlelist" : "История покупок",
   "cabinet_t1" : "Дата",
-  "cabinet_t2" : "Магазин",
+  "cabinet_t2" : "Магазин / покупка",
   "cabinet_t3" : "Оплата"
 }

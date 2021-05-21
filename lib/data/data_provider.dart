@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 
+import '../data/testdata.dart';
 import '../utils/const.dart';
 import '../model/loyalty_level.dart';
 import '../model/portfolio.dart';
@@ -32,7 +33,7 @@ class DataProvider with ChangeNotifier{
   Future<bool> get ready => _ready ? _ready : Future.delayed(Duration(seconds: 1), () => _ready) ;
 
   DataProvider() {
-    _portfolio = Portfolio.test();
+    _portfolio = GenTestData.portfolioTest();
     loadData().then((value) => _ready = true);
   }
 
@@ -46,7 +47,6 @@ class DataProvider with ChangeNotifier{
   }
 
   Future<void> saveData() async {
-    print("* DataProvider.saveData: begin");
     try {
       final LocalStorage _storage = LocalStorage(kStorageCatalog);
       await _storage.ready;
@@ -59,11 +59,9 @@ class DataProvider with ChangeNotifier{
     } catch (e) {
       print("* DataProvider.saveData: Error=${e.toString()}");
     }
-    print("* DataProvider.saveData: end");
   }
 
   Future<bool> loadData() async {
-    print("* DataProvider.loadData: begin");
     bool res = false;
     try {
       final LocalStorage _storage = LocalStorage(kStorageCatalog);
@@ -77,7 +75,6 @@ class DataProvider with ChangeNotifier{
     } catch (e) {
       print("* DataProvider.loadData: Error=${e.toString()}");
     }
-    print("* DataProvider.loadData: end");
     return res;
   }
 

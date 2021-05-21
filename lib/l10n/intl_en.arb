@@ -34,7 +34,7 @@
   "purchase_lp" : "Loyalty program/Promotion",
   "purchase_bonus" : "Bonus payment",
   "purchase_payment" : "Total payable including bonuses",
-  "purchase_amount" : "Total:",
+  "purchase_amount" : "Purchase amount:",
   "purchase_payb" : "Payment by bonuses:",
 
   "remaining" : "Remaining bonuses",
@@ -44,6 +44,7 @@
   "btn_save" : "Save",
 
   "check_name" : "Please enter your login or email",
+  "check_name2" : "Please enter a valid login",
   "check_pwd" : "Please enter a valid password",
   "check_notempty" : "Please fill in the field",
   "check_pwd_noequal" : "Passwords are not equal",

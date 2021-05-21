@@ -41,19 +41,23 @@ class ProfileController with ChangeNotifier {
     tecPwd.text = "";
     tecPwd2.text = "";
 
-    tecFirstName.addListener(() => setEdit());
-    tecLastName.addListener(() => setEdit());
-    tecMiddleName.addListener(() => setEdit());
-    tecPhone.addListener(() => setEdit());
-    tecBirthday.addListener(() => setEdit());
-    tecPwd.addListener(() => setEdit());
+    tecFirstName.addListener(() => setEdit(_dp.user?.firstName, tecFirstName.text));
+    tecLastName.addListener(() => setEdit(_dp.user?.lastName, tecLastName.text));
+    tecMiddleName.addListener(() => setEdit(_dp.user?.middleName, tecMiddleName.text));
+    tecPhone.addListener(() => setEdit(_dp.user?.phoneNumber, tecPhone.text));
+    tecBirthday.addListener(() => setEdit(formatter.format(_dp.user?.birthday), tecBirthday.text));
   }
 
-  void setEdit() {
-    print("* setEdit");
+  void setEdit(dynamic prev, dynamic curr) {
     if(!isEdit) {
-      isEdit = true;
-      notifyListeners();
+      try {
+        if(prev != curr) {
+          isEdit = true;
+          notifyListeners();
+        }
+      } catch (e) {
+        print(e.toString());
+      }
     }
   }
 
@@ -97,7 +101,7 @@ class ProfileController with ChangeNotifier {
 
   String checkMiddleName(String value) {
     _dp.user.middleName = value;
-    return _checkIsEmpty(value);
+    return null;
     }
 
   String checkPhone(String value) {
@@ -107,7 +111,7 @@ class ProfileController with ChangeNotifier {
 
   String checkBirthday(String value) {
     _dp.user.birthday = formatter.parse(value);
-    tecBirthday.text = value;
+    //tecBirthday.text = value;
     return _checkIsEmpty(value);
     }
 
@@ -116,13 +120,14 @@ class ProfileController with ChangeNotifier {
     return _checkIsEmpty(value);
   }
 
+  @override
   void dispose() {
-    tecFirstName.removeListener(() => setEdit());
-    tecLastName.removeListener(() => setEdit());
-    tecMiddleName.removeListener(() => setEdit());
-    tecPhone.removeListener(() => setEdit());
-    tecBirthday.removeListener(() => setEdit());
-    tecPwd.removeListener(() => setEdit());
+    super.dispose();
+    tecFirstName.removeListener(() => setEdit(_dp.user?.firstName, tecFirstName.text));
+    tecLastName.removeListener(() => setEdit(_dp.user?.lastName, tecLastName.text));
+    tecMiddleName.removeListener(() => setEdit(_dp.user?.middleName, tecMiddleName.text));
+    tecPhone.removeListener(() => setEdit(_dp.user?.phoneNumber, tecPhone.text));
+    tecBirthday.removeListener(() => setEdit(formatter.format(_dp.user?.birthday), tecBirthday.text));
 
     tecEmail.dispose();
     tecFirstName.dispose();
@@ -138,7 +143,7 @@ class ProfileController with ChangeNotifier {
     DateFormat formatter = DateFormat(kFormatDate);
     final DateTime picked = await showDatePicker(
       context: context,
-      initialDate: _dp.user?.birthday ?? DateTime(2000, 1, 1),
+      initialDate: formatter.parse(tecBirthday.text),
       firstDate: DateTime(1920),
       lastDate: DateTime.now(),
     );

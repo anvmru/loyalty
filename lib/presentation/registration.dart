@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_multi_formatter/formatters/phone_input_formatter.dart';
 
 import '../controller/profile.dart';
 import '../utils/const.dart';
@@ -11,16 +12,13 @@ import '../widget/title_login.dart';
 class RegPage extends StatelessWidget {
   static const id = 'reg_page';
   final _formKey = GlobalKey<FormState>();
-  final ButtonStyle buttonStyle = ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.all(16.0)));
 
   @override
   Widget build(BuildContext context) {
     print("* RegPage.build");
     final ProfileController _pc = Provider.of<ProfileController>(context);
-    _pc.iniTec();
 
     return Scaffold(
-      //appBar: AppBar(title: Text(gLocale.bar_reg), centerTitle: true),
       body: Form(
           key: _formKey,
           child: ListView(children: <Widget>[
@@ -74,7 +72,8 @@ class RegPage extends StatelessWidget {
                   controller: _pc.tecPhone,
                   keyboardType: TextInputType.phone,
                   decoration: new InputDecoration(hintText: gLocale.user_phone),
-                  validator: (value) => _pc.checkPhone(value),
+                  validator: (value) => _pc.checkPhone(value), 
+                  inputFormatters: [ PhoneInputFormatter()]
                 )),
 
             // Дата рождения
@@ -87,10 +86,7 @@ class RegPage extends StatelessWidget {
                   validator: (value) => _pc.checkBirthday(value),
                 ),
                 trailing:
-                IconButton(icon: Icon(Icons.date_range),
-                    onPressed: () async => await _pc.selectDate(context)
-                )
-            ),
+                    IconButton(icon: Icon(Icons.date_range), onPressed: () async => await _pc.selectDate(context))),
 
             // Пароль
             ListTile(
@@ -113,14 +109,12 @@ class RegPage extends StatelessWidget {
             // SizedBox(height: MediaQuery.of(context).size.width * 0.1),
 
             // Кнопки
-            Button(context, gLocale.btn_registration, _registration),
-
+            Button(context, gLocale.btn_registration, (BuildContext context) {
+              if (_formKey.currentState.validate()) {
+                _pc.registration(context);
+              }
+            })
           ])),
     );
-  }
-  void _registration(BuildContext context) {
-    if (_formKey.currentState.validate()) {
-      Provider.of<ProfileController>(context, listen: false).registration(context);
-    }
   }
 }
