@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../generated/l10n.dart';
 
 S gLocale;
@@ -16,4 +15,5 @@ const String kStorageUser = 'user';
 const String kStoragePurchases = 'purchases';
 const String kStorageLoyalty = 'loyalty';
 const int kTimeoutSecond = 10;
+
 const String kFormatDate = 'dd.MM.yyyy';
